@@ -1,6 +1,6 @@
 Rectangle dodger
 ================
-![Game screenshot](http://imgur.com/z4BdZj0)
+[Screenshot](http://i.imgur.com/z4BdZj0.png)
 
 Description
 -----------
@@ -15,7 +15,6 @@ Avoid non-white rectangles.
 Controls
 --------
 * Mouse - Move
-Keys:
 * Esc - Quit
 * R - Restart
 
