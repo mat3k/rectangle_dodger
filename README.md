@@ -1,6 +1,6 @@
 Rectangle dodger
 ================
-[Screenshot](http://i.imgur.com/z4BdZj0.png)
+![Screenshot](http://i.imgur.com/z4BdZj0.png)
 
 Description
 -----------
