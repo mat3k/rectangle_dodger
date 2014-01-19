@@ -37,6 +37,7 @@ class GameWindow < Gosu::Window
     @fonts['score'] = Gosu::Font.new(self, Gosu::default_font_name, 20)
     @fonts['game_over'] = Gosu::Font.new(self, Gosu::default_font_name, 50)
     @fonts['hint'] = Gosu::Font.new(self, Gosu::default_font_name, 15)
+    @fonts['debug'] = Gosu::Font.new(self, Gosu::default_font_name, 15)
   end
 
   def start_game
@@ -71,6 +72,7 @@ class GameWindow < Gosu::Window
     when :game_over
       draw_game_over
     end
+    draw_debug
   end
   
   def draw_play
@@ -136,6 +138,13 @@ class GameWindow < Gosu::Window
 
   def draw_score
     @fonts['score'].draw("score: #{@player.score}", 5, 5, 0)
+  end
+
+  def draw_debug
+    @fonts['debug'].draw("X: #{@player.x}", 5, 450, 0)
+    @fonts['debug'].draw("Y: #{@player.y}", 5, 460, 0)
+    @fonts['debug'].draw("enemies: #{@enemies.size}", 65, 450, 0)
+    @fonts['debug'].draw("state: #{@state.to_s}", 65, 460, 0)    
   end
 
   def detect_collisions
