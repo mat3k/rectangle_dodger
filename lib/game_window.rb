@@ -47,23 +47,45 @@ class GameWindow < Gosu::Window
     @turn = 0
     @game_over = false
     @enemies = create_enemies
+    @state = :play
   end
   
   def update
-    unless @game_over
+    case @state
+    when :play
       @player.score += @level + @enemies.size * @level
       update_enemies
       update_player_position
       detect_collisions
+    when :game_over
+      update_player_position
+    end
+  end
+
+  def draw
+    case @state
+    #when :menu
+    #  draw_menu
+    when :play
+      draw_play
+    when :game_over
+      draw_game_over
     end
   end
   
-  def draw
+  def draw_play
     draw_background
     draw_player
     draw_enemies
     draw_score
-    draw_game_over if @game_over
+  end
+
+  def draw_game_over
+    draw_background
+    draw_player
+    draw_enemies
+    draw_score
+    draw_game_over_titles
   end
 
   def draw_background
@@ -80,7 +102,7 @@ class GameWindow < Gosu::Window
     end
   end
 
-  def draw_game_over
+  def draw_game_over_titles
     @fonts['game_over'].draw("GAME OVER", 200, 200, 0)
     @fonts['hint'].draw("press R to restart", 250, 236, 0)
   end
@@ -119,7 +141,7 @@ class GameWindow < Gosu::Window
   def detect_collisions
     @enemies.each do |enemy|
       if check_collision(@player, enemy)
-        @game_over = true
+        @state = :game_over
       end
     end
   end
@@ -129,10 +151,8 @@ class GameWindow < Gosu::Window
   end
 
   def button_down(key)
-    if @game_over
-      if key == Gosu::KbR
-        restart_game
-      end
+    if key == Gosu::KbR
+      restart_game
     end
     if key == Gosu::KbEscape
       close
