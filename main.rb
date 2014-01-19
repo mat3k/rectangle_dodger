@@ -3,10 +3,10 @@ require "bundler/setup"
 
 require 'gosu'
 
-require './rectangle'
-require './player'
-require './enemy'
-require './game_window'
+require './lib/rectangle'
+require './lib/player'
+require './lib/enemy'
+require './lib/game_window'
 
 window = GameWindow.new
 window.show
