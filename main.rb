@@ -1,12 +1,7 @@
 require "rubygems"
 require "bundler/setup"
-
 require 'gosu'
+require './lib/game'
 
-require './lib/rectangle'
-require './lib/player'
-require './lib/enemy'
-require './lib/game_window'
-
-window = GameWindow.new
-window.show
+#
+RectangleDodger.run
