@@ -86,5 +86,4 @@ module RectangleDodger
   def self.run
     RectangleDodger::GameWindow.new.show
   end
-
 end

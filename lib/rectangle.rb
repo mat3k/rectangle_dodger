@@ -1,5 +1,4 @@
 module RectangleDodger
-
   class Rectangle
     HEIGHT = 10
     WIDTH = 10
@@ -41,5 +40,4 @@ module RectangleDodger
       @x, @y = x, y
     end
   end
-
 end

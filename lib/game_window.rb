@@ -1,7 +1,5 @@
 module RectangleDodger
-
   class GameWindow < Gosu::Window
-
     include RectangleDodger
 
     TOP_COLOR = Gosu::Color.new(0xFF1EB1FA)
@@ -111,7 +109,5 @@ module RectangleDodger
     def restart_game
       @game = Game.new(WIDTH / 2, HEIGHT / 2)
     end
-
   end
-
 end
