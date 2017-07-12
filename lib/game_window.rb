@@ -8,9 +8,6 @@ module RectangleDodger
     WIDTH = 640
     HEIGHT = 480
 
-    PLAYER_WIDTH = 10
-    PLAYER_HEIGHT = 10
-
     attr_reader :game
 
     def initialize
@@ -96,14 +93,9 @@ module RectangleDodger
       @fonts[:debug].draw("state: #{game.state.to_s}", 65, 460, 0)
     end
 
-
     def button_down(key)
-      if key == Gosu::KbR
-        restart_game
-      end
-      if key == Gosu::KbEscape
-        close
-      end
+      restart_game if key == Gosu::KbR
+      close if key == Gosu::KbEscape
     end
 
     def restart_game
