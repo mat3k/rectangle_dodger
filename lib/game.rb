@@ -1,10 +1,13 @@
 require './lib/rectangle'
 require './lib/player'
-require './lib/enemy'
 require './lib/game_window'
 
-module RectangleDodger
+require './lib/enemy/base'
+require './lib/enemy/straight'
+require './lib/enemy/sinusoid'
+require './lib/enemy/follower'
 
+module RectangleDodger
   class Game
     WIDTH = 640
     HEIGHT = 480
@@ -13,10 +16,10 @@ module RectangleDodger
 
     def initialize(player_x, player_y)
       @player = Player.new(player_x, player_y)
-      @enemies = create_enemies
       @level = 1
       @state = :play
       @score = 0
+      @enemies = create_enemies
     end
 
     def update_score
@@ -45,17 +48,17 @@ module RectangleDodger
 
     def create_enemies
       if level == 1
-        Array.new(5) { LeftToRightSinus.new(HEIGHT) }
+        Array.new(5) { Enemy::Straight.new(HEIGHT) }
       elsif level == 2
-        Array.new(20) { LeftToRightSinus.new(HEIGHT) }
+        Array.new(20) { Enemy::Sinusoid.new(HEIGHT) }
       elsif level == 3
-        Array.new(10) { LeftToRight.new(HEIGHT, rand(10) + 2) }
+        Array.new(10) { Enemy::Straight.new(HEIGHT, rand(10) + 2) }
       elsif level == 4
-        Array.new(20) { LeftToRight.new(HEIGHT, rand(12) + 3) }
+        Array.new(20) { Enemy::Straight.new(HEIGHT, rand(12) + 3) }
       elsif level == 5
-        Array.new(30) { LeftToRight.new(HEIGHT, rand(9) + 6) }
+        Array.new(30) { Enemy::Straight.new(HEIGHT, rand(9) + 6) }
       else
-        Array.new(60) { LeftToRightFollower.new(HEIGHT, @player) }
+        Array.new(60) { Enemy::Follower.new(HEIGHT, @player) }
       end
     end
 
