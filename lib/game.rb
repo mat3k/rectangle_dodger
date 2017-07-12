@@ -32,13 +32,12 @@ module RectangleDodger
     end
 
     def update_player(x, y)
-      @player.x = x
-      @player.y = y
+      player.set_position(x, y)
     end
 
     def detect_collisions
-      @enemies.each do |enemy|
-        if check_collision(@player, enemy)
+      enemies.each do |enemy|
+        if check_collision(player, enemy)
           @state = :game_over
         end
       end

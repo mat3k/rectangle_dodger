@@ -37,6 +37,9 @@ module RectangleDodger
       [left, top, @color, right, top, @color, left, bottom, @color, right, bottom, @color]
     end
 
+    def set_position(x, y)
+      @x, @y = x, y
+    end
   end
 
 end
