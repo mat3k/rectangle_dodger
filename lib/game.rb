@@ -51,13 +51,13 @@ module RectangleDodger
       elsif level == 2
         Array.new(20) { Enemy::Sinusoid.new(HEIGHT) }
       elsif level == 3
-        Array.new(10) { Enemy::Straight.new(HEIGHT, rand(10) + 2) }
+        Array.new(10) { |counter| Enemy::Straight.new(HEIGHT, 8 + counter * 0.7) }
       elsif level == 4
-        Array.new(20) { Enemy::Straight.new(HEIGHT, rand(12) + 3) }
+        Array.new(20) { |counter| Enemy::Straight.new(HEIGHT, 9 + counter * 0.5) }
       elsif level == 5
-        Array.new(30) { Enemy::Straight.new(HEIGHT, rand(9) + 6) }
+        Array.new(30) { |counter| Enemy::Straight.new(HEIGHT, 10 + counter * 0.3) }
       else
-        Array.new(60) { Enemy::Follower.new(HEIGHT, @player) }
+        Array.new(50) { Enemy::Follower.new(HEIGHT, @player) }
       end
     end
 
