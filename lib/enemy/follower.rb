@@ -14,13 +14,9 @@ module RectangleDodger
       end
 
       def move_vertically
-        if @x < @player.x
-          if @y < @player.y
-            @y += @y_speed
-          elsif @y > @player.y
-            @y -= @y_speed
-          end
-        end
+        return nil if @x >= @player.x
+        return @y += @y_speed if @y < @player.y
+        return @y -= @y_speed if @y > @player.y
       end
     end
   end
