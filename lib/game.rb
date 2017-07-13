@@ -31,8 +31,25 @@ module RectangleDodger
       update_enemies_existance
     end
 
-    def update_player(x, y)
-      player.set_position(x, y)
+    def update_player_position(x, y)
+      player_x =
+        if (x < 0)
+          0
+        elsif (x + player.width > WIDTH)
+          WIDTH - player.width
+        else
+          x
+        end
+
+      player_y =
+        if (y < 0)
+          0
+        elsif (y + player.height > HEIGHT)
+          HEIGHT - player.height
+        else
+          y
+        end
+      player.set_position(player_x, player_y)
     end
 
     def detect_collisions
@@ -57,7 +74,7 @@ module RectangleDodger
       elsif level == 5
         Array.new(30) { |counter| Enemy::Straight.new(HEIGHT, 10 + counter * 0.3) }
       else
-        Array.new(50) { Enemy::Follower.new(HEIGHT, @player) }
+        Array.new(50) { Enemy::Follower.new(HEIGHT, player) }
       end
     end
 

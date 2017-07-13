@@ -31,10 +31,10 @@ module RectangleDodger
       when :play
         game.update_score
         game.update_enemies
-        game.update_player(self.mouse_x, self.mouse_y)
+        game.update_player_position(self.mouse_x, self.mouse_y)
         game.detect_collisions
       when :game_over
-        game.update_player(self.mouse_x, self.mouse_y)
+        game.update_player_position(self.mouse_x, self.mouse_y)
       end
     end
 
